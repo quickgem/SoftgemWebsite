@@ -21,8 +21,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::698355678423:role/AmazonS3FullAccessRole
-
           aws-region: eu-west-1
 
       - name: Sync files to S3
-        run: aws s3 sync . s3://softgem-website --delete
+        run: aws s3 sync ./ s3://softgem-website --delete
