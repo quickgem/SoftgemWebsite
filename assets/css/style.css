@@ -16808,7 +16808,8 @@ body.active-light-mode
     position: relative;
     display: inline-block;
     width: 100%;
-    min-height: 100px;
+    min-height: 150px;
+    margin-block: 2rem;
   }
 
   .text-carousel {
