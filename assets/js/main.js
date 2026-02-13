@@ -480,25 +480,14 @@
     },
 
     darkLight: function () {
-      var styleMode = document.querySelector(
-        'meta[name="theme-style-mode"]'
-      ).content;
-      var cookieKey =
-        styleMode == 1
-          ? "client_dark_mode_style_cookie"
-          : "client_light_mode_style_cookie";
-      if (Cookies.get(cookieKey) == "dark") {
-        $("body").removeClass("active-light-mode");
-        $("body").addClass("active-dark-mode");
-      } else if (Cookies.get(cookieKey) == "light") {
-        $("body").removeClass("active-dark-mode");
-        $("body").addClass("active-light-mode");
-      } else {
-        if (styleMode == 1) {
-          $("body").addClass("active-light-mode");
-        } else {
-          $("body").addClass("active-dark-mode");
-        }
+      // Force dark mode on every page load, ignoring any previous light-mode cookie
+      $("body").removeClass("active-light-mode").addClass("active-dark-mode");
+      // Optionally normalize cookies so other scripts see dark mode as the current style
+      try {
+        Cookies.remove("client_light_mode_style_cookie");
+        Cookies.set("client_dark_mode_style_cookie", "dark", { expires: 365 });
+      } catch (e) {
+        // Fail silently if Cookies is unavailable
       }
     },
   };

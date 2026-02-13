@@ -270,19 +270,15 @@
     $(function() {
 
         function setStyleCookie(mode) {
-            var styleMode = document.querySelector('meta[name="theme-style-mode"]').content;
-            var styleCookieVal = mode == 1 ? 'dark' : 'light';
-            var cookieKey = styleMode == 1 ? 'client_dark_mode_style_cookie' : 'client_light_mode_style_cookie';
+            // Always enforce dark mode regardless of toggle direction
+            var cookieKey = 'client_dark_mode_style_cookie';
+            var styleCookieVal = 'dark';
             // reset cookies
-            Cookies.remove('client_dark_mode_style_cookie')
-            Cookies.remove('client_light_mode_style_cookie')
-            Cookies.set(cookieKey, styleCookieVal, {expires: 7});
+            Cookies.remove('client_dark_mode_style_cookie');
+            Cookies.remove('client_light_mode_style_cookie');
+            Cookies.set(cookieKey, styleCookieVal, {expires: 365});
             $('body').removeClass('active-dark-mode active-light-mode');
-            if (Cookies.get(cookieKey) == 'dark') {
-                $('body').addClass('active-dark-mode');
-            } else {
-                $('body').addClass('active-light-mode');
-            }
+            $('body').addClass('active-dark-mode');
         }
 
         $('.my_switcher .setColor.dark').on('click', function () {
