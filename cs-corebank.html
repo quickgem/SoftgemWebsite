@@ -167,7 +167,7 @@
                                     <h1 class="theme-gradient">Corestep Microfinance Bank</h1>
                                 </div>
                                
-                                <div class="thumbnail alignwide mt--60"><img class="w-100 radius" src="assets/images/blog/blog-01.jpg" alt="Blog Images"></div>
+                                <div class="thumbnail alignwide mt--60"><img class="w-100 radius" src="assets/images/blog/blog-01.jpg" alt="Corestep Microfinance Bank"></div>
                             </div>
                         </div>
                     </div>
@@ -213,7 +213,7 @@
                           <br />
                           <p class="reveal fadeInUp" data-wow-delay="0.3s" >
                             CoreStep relied on traditional, in-house on-premises systems to run its business services
-                            like B2B operations and Point-of-Sale POS devices. However, this setup couldn't keep up with
+                            like B2B operations and Point-of-Sale (POS) devices. However, this setup couldn't keep up with
                             the company’s growth. To handle more customers efficiently and ensure services ran smoothly
                             without hiccups, CoreStep needed to shift these systems to AWS, a cloud platform known for
                             reliability and scalability.
@@ -237,7 +237,7 @@
                         <h6>3. Building a Smarter POS System:</h6>
                         <p class="reveal fadeInUp" data-wow-delay="0.3s" >
                           With their POS network expanding rapidly, CoreStep decided to build a new Terminal Management
-                          System TMS to better support its operations. This system needed to handle:
+                          System (TMS) to better support its operations. This system needed to handle:
                         </p>
                         <br />
 
@@ -271,6 +271,12 @@
 
                         </ul>
                       </div>
+                      <div >
+                        <h6>4. Modernizing the Banking Data Platform:</h6>
+                        <p class="reveal fadeInUp" data-wow-delay="0.3s" >
+                          As CoreStep's digital banking operations grew and their POS transaction volumes exceeded 10,000 daily transactions, they required a managed, highly available database platform with enterprise-grade security. The bank needed comprehensive monitoring, encryption at rest and in transit, automated backups, and disaster recovery capabilities to meet financial regulatory requirements while maintaining sub-second transaction authorization times.
+                        </p>
+                      </div>
                   </div>
                 </div>
 
@@ -290,8 +296,8 @@
                         <ul>
                           <li> <span>Stability:</span> The migration enhanced operational reliability. </li>
                           <br />
-                          <li> <span>Cost Savings:</span> AWS's scalable infrastructure reduced operational overhead by
-                            X%. </li>
+                          <li> <span>Cost Savings:</span> AWS's scalable infrastructure reduced operational overhead.
+                          </li>
                           <br />
                           <li> <span>Future-Ready:</span> The groundwork for migrating the Azure-based loan service
                             application to AWS was completed, streamlining CoreStep’s infrastructure for future
@@ -303,7 +309,7 @@
                       </div>
 
                       <div >
-                        <h6>Phase 2: Terminal Management System TMS Development</h6>
+                        <h6>Phase 2: Terminal Management System (TMS) Development</h6>
                         <br />
                         <p class="reveal fadeInUp" data-wow-delay="0.3s" >
                           SoftGEM designed a serverless architecture using AWS Fargate, enabling CoreStep to efficiently
@@ -312,15 +318,40 @@
                         <br />
 
                         <ul>
-                          <li> <span>Database Resilience:</span> Amazon RDS for MSSQL with replication ensured high
+                          <li> <span>Database Resilience:</span> Amazon RDS for MSSQL with Multi-AZ replication ensured high
                             availability and faster data recovery. </li><br />
-                          <li> <span>Traffic Distribution:</span> Elastic Load Balancing ELB was implemented to
+                          <li> <span>Traffic Distribution:</span> Elastic Load Balancing (ELB) was implemented to
                             efficiently distribute traffic, optimizing system performance. </li><br />
                           <li> <span> Service Continuity:</span> A NAT Gateway provided secure outbound internet access
                             while ensuring zero downtime during system updates.
                           </li>
 
                         </ul>
+                      </div>
+                      <div >
+                        <h6>Phase 3: Finlake CIB Deployment & Platform Enhancement</h6>
+                        <br />
+                        <p class="reveal fadeInUp" data-wow-delay="0.3s" >
+                          Building on the established AWS infrastructure, SoftGEM deployed Finlake CIB (Corporate & Institutional Banking) into CoreStep's AWS environment. Finlake CIB is a comprehensive banking tooling product that manages and optimizes the RDS database layer, enhancing CoreStep's existing TMS with enterprise-grade data management capabilities.
+                        </p>
+                        <br />
+                        <p>Key components of this phase include:</p>
+                        <ul>
+                          <li> <span>Amazon RDS for MSSQL (Multi-AZ):</span> Enhanced the existing RDS MSSQL deployment with Multi-AZ configuration for automated failover, ensuring continuous operation for CoreStep's POS transaction processing and TMS backend. Automated backups with 7-day retention and point-in-time recovery were configured. </li>
+                          <br />
+                          <li> <span>AWS Fargate Containers:</span> Finlake CIB application services deployed on Fargate with optimized connection pooling to RDS, auto-scaling based on CPU utilization targets, and efficient handling of 10,000+ daily POS transactions with sub-second authorization times. </li>
+                          <br />
+                          <li> <span>Security & Encryption:</span> Customer-managed AWS KMS keys for encryption at rest across RDS and EBS volumes. TLS 1.2+ enforced for all data in transit. AWS Secrets Manager for secure credential storage and automated rotation, eliminating hardcoded credentials from all application components.</li>
+                          <br />
+                          <li> <span>VPC Architecture:</span> Multi-tier VPC design with private database subnets isolated from public-facing resources. Security groups restrict database access to the application tier only, with NAT Gateways for secure outbound connectivity and no direct internet access to database subnets.</li>
+                          <br />
+                          <li> <span>Monitoring & Operations:</span> Amazon CloudWatch with Enhanced Monitoring for real-time database health metrics including CPU utilization, memory usage, and I/O performance. Custom dashboards tracking daily transaction volumes, success/failure rates, and peak hour performance analysis. Defined operational runbooks for incident response and troubleshooting.</li>
+                          <br />
+                          <li> <span>Backup & Disaster Recovery:</span> Automated daily backups with 7-day retention, point-in-time recovery capability, and a documented disaster recovery plan with a Recovery Time Objective (RTO) of 4 hours and Recovery Point Objective (RPO) of 15 minutes.</li>
+                          <br />
+                          <li> <span>Identity & Access Management:</span> AWS Identity Center for centralized user access management, IAM roles following the principle of least privilege, MFA enforcement for all users, and CloudTrail enabled across all regions for comprehensive audit logging.</li>
+                        </ul>
+                        <br />
                       </div>
                   </div>
 
@@ -335,8 +366,8 @@
                             AWS with less than 2 hours of downtime, ensuring uninterrupted service delivery. </li>
                           <br />
                           <li> <span> Enhanced Scalability and Cost Efficiency: </span>AWS Fargate’s serverless
-                            architecture enabled CoreStep to handle peak workloads with 28% scalability improvement,
-                            saving 1,200,0000 in infrastructure costs. </li>
+                            architecture enabled CoreStep to handle peak workloads with a 28% scalability improvement,
+                            with significant savings in infrastructure costs. </li>
 
                           <br />
                           <li> <span>Expanded Customer Base :</span> Corebank’s active user base grew from 5,000 to over
@@ -347,10 +378,20 @@
 
                           <li>
                             <span> Increased Customer Engagement : </span>The implementation of the TMS introduced
-                            features like device push notifications and advanced analytics, which significantly enhanced
-                            the user experience. These updates resulted in a 40% increase in active user sessions, a 25%
-                            growth in transaction volumes, and a 30% improvement in user retention over the course of
-                            three months.
+                            features like device push notifications and advanced analytics, resulting in a 40% increase in active user sessions, a 25%
+                            growth in transaction volumes, and a 30% improvement in user retention over three months.
+                          </li>
+                            <br />
+                          <li>
+                            <span> Sub-Second Transaction Processing: </span>Finlake CIB on RDS MSSQL delivers 1-second authorization times for POS transactions, with the Multi-AZ configuration providing 99.9%+ database availability for CoreStep's growing terminal network.
+                          </li>
+                            <br />
+                          <li>
+                            <span> Enterprise-Grade Security & Compliance: </span>Full encryption at rest and in transit, automated credential rotation via Secrets Manager, and comprehensive audit trails via CloudTrail meeting financial regulatory compliance requirements.
+                          </li>
+                            <br />
+                          <li>
+                            <span> Operational Excellence: </span>Real-time monitoring dashboards, defined KPI thresholds with automated alerting, and documented runbooks ensure rapid incident detection and resolution with defined RTO/RPO targets.
                           </li>
 
 
